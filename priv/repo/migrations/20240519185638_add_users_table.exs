@@ -1,0 +1,19 @@
+defmodule AccountManager.Repo.Migrations.AddUsersTable do
+  use Ecto.Migration
+
+  def change do
+    create table("users") do
+      add :username, :string, size: 50, null: false
+      add :document, :string
+      add :email, :string, size: 100, null: false
+      add :password_hash, :string, null: false
+      add :phone, :string, size: 15
+      add :profile, :string, null: false
+      add :is_active, :boolean, default: true
+
+      timestamps()
+    end
+
+    create unique_index("users", [:email, :document])
+  end
+end
