@@ -7,6 +7,8 @@ defmodule AccountManagerWeb.Router do
 
   scope "/api", AccountManagerWeb do
     pipe_through :api
+
+    resources "/users", UsersController, only: [:create, :update, :delete, :show]
   end
 
   # Enable LiveDashboard in development

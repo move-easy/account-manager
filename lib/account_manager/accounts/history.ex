@@ -1,23 +1,24 @@
-defmodule AccountManager.Account.History do
+defmodule AccountManager.Accounts.History do
   @moduledoc """
   History schema
     Example:
       iex(1)> AccountManager.Account.History.changeset(%{zip_code: "29102347", user_id: 1, is_favorite: true})
 
       return:
-      #Ecto.Changeset<
-        action: nil,
-        changes: %{is_favorite: true, user_id: 1, zip_code: "29102347"},
-        errors: [],
-        data: #AccountManager.Account.History<>,
-        valid?: true
-      >
+        #Ecto.Changeset<
+            action: nil,
+            changes: %{user_id: 1, is_favorite: true, zip_code: "29102347"},
+            errors: [],
+            data: #AccountManager.Accounts.History<>,
+            valid?: true
+        >
+
   """
 
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AccountManager.Account.User
+  alias AccountManager.Users.User
 
   @required_fields [:zip_code, :is_favorite, :user_id]
 
