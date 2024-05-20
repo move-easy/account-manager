@@ -1,6 +1,17 @@
 defmodule AccountManager.Account.History do
   @moduledoc """
   History schema
+    Example:
+      iex(1)> AccountManager.Account.History.changeset(%{zip_code: "29102347", user_id: 1, is_favorite: true})
+
+      return:
+      #Ecto.Changeset<
+        action: nil,
+        changes: %{is_favorite: true, user_id: 1, zip_code: "29102347"},
+        errors: [],
+        data: #AccountManager.Account.History<>,
+        valid?: true
+      >
   """
 
   use Ecto.Schema

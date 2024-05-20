@@ -6,16 +6,12 @@ defmodule AccountManager.Account.State do
 
       return:
         #Ecto.Changeset<
-          action: nil,
-          changes: %{
-            region: "Norte",
-            state_name: "Acre",
-            country: "Brasil"
-          },
-          errors: [],
-          data: #AccountManager.Account.State<>,
-          valid?: true
-        >
+        action: nil,
+        changes: %{region: "Norte", state_name: "Acre"},
+        errors: [],
+        data: #AccountManager.Account.State<>,
+        valid?: true
+      >
   """
 
   use Ecto.Schema
