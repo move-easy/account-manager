@@ -5,9 +5,10 @@ defmodule AccountManager.Repo.Migrations.AddUsersTable do
     create table("users") do
       add :username, :string, size: 50, null: false
       add :document, :string
+      add :phone, :string, size: 15
+      add :age, :integer
       add :email, :string, size: 100, null: false
       add :password_hash, :string, null: false
-      add :phone, :string, size: 15
       add :profile, :string, null: false
       add :is_active, :boolean, default: true
 
