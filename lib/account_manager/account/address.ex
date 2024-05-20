@@ -1,4 +1,8 @@
 defmodule AccountManager.Account.Address do
+  @moduledoc """
+  Address schema
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

@@ -1,4 +1,23 @@
 defmodule AccountManager.Account.State do
+  @moduledoc """
+  State schema
+    Example:
+      iex> State.changeset(%{region: "Norte", state_name: "Acre"})
+
+      return:
+        #Ecto.Changeset<
+          action: nil,
+          changes: %{
+            region: "Norte",
+            state_name: "Acre",
+            country: "Brasil"
+          },
+          errors: [],
+          data: #AccountManager.Account.State<>,
+          valid?: true
+        >
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -12,7 +31,7 @@ defmodule AccountManager.Account.State do
     field :state_name, :string
     field :country, :string, default: "Brasil"
 
-    has_many :address, Address
+    has_many :adresses, Address
 
     timestamps()
   end

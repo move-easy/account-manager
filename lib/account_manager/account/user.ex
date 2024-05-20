@@ -1,4 +1,27 @@
 defmodule AccountManager.Account.User do
+  @moduledoc """
+  User schema
+    Example:
+      iex> User.changeset(%{username: "oteixeiras", document: "123456", email: "ofernandos.teixeira@gmail.com", password: "1234456", phone: "997037221", profile: "admin", is_active: true}
+
+      return:
+        #Ecto.Changeset<
+          action: nil,
+          changes: %{
+            profile: "admin",
+            username: "oteixeiras",
+            password: "1234456",
+            document: "123456",
+            email: "ofernandos.teixeira@gmail.com",
+            phone: "997037221",
+            password_hash: "$argon2id$v=19$m=65536,t=8,p=2$+sjgzeUTfvUhcS8W5U4h/w$tC+g4RQ+fQClhhAR9PTqKMijROu1wNEw2KR6XtwbyTk"
+          },
+          errors: [],
+          data: #AccountManager.Account.User<>,
+          valid?: true
+        >
+  """
+
   alias AccountManager.Account.{Address, History}
   use Ecto.Schema
   import Ecto.Changeset
@@ -22,8 +45,6 @@ defmodule AccountManager.Account.User do
   end
 
   def changeset(user \\ %__MODULE__{}, attrs) do
-    # params = %{username: "oteixeiras", document: "123456", email: "ofernandos.teixeira@gmail.com", password: "1234456", phone: "997037221", profile: "admin", is_active: true}
-
     user
     |> cast(attrs, @requered_fields)
     |> validate_required(@requered_fields)

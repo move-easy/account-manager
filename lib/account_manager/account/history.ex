@@ -1,4 +1,8 @@
 defmodule AccountManager.Account.History do
+  @moduledoc """
+  History schema
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
