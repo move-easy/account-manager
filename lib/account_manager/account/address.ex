@@ -2,7 +2,7 @@ defmodule AccountManager.Account.Address do
   @moduledoc """
   Address schema
     Example:
-      iex(1)> AccountManager.Account.Address.changeset(%{zip_code: "29102347", user_id: 1, state_id: 1})
+      iex(1)> AccountManager.Account.Address.changeset(%{zip_code: "29102347", user_id: 1, state_acronym: "ES"})
 
       return:
       #Ecto.Changeset<
@@ -17,16 +17,15 @@ defmodule AccountManager.Account.Address do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AccountManager.Account.{User, State}
+  alias AccountManager.Account.User
 
-  @required_fields [:user_id, :state_id, :zip_code]
+  @required_fields [:user_id, :zip_code, :state_acronym]
 
-  schema "address" do
+  schema "addresses" do
     field :zip_code, :string
+    field :state_acronym, :string
 
     belongs_to :user, User
-    belongs_to :state, State
-
     timestamps()
   end
 
@@ -35,5 +34,34 @@ defmodule AccountManager.Account.Address do
     |> cast(attrs, @required_fields)
     |> validate_required(@required_fields)
     |> validate_length(:zip_code, is: 8)
+    |> validate_inclusion(:state_acronym, [
+      "ES",
+      "MG",
+      "SP",
+      "RJ",
+      "BA",
+      "RS",
+      "SC",
+      "PR",
+      "GO",
+      "DF",
+      "MS",
+      "MT",
+      "RO",
+      "AC",
+      "AM",
+      "RR",
+      "PA",
+      "AP",
+      "TO",
+      "MA",
+      "PI",
+      "CE",
+      "RN",
+      "PB",
+      "PE",
+      "AL",
+      "SE"
+    ])
   end
 end

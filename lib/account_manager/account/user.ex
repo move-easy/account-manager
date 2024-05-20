@@ -38,7 +38,7 @@ defmodule AccountManager.Account.User do
     field :profile, :string
     field :is_active, :boolean, default: true
 
-    has_many :adresses, Address
+    has_many :addresses, Address
     has_many :historys, History
 
     timestamps()
