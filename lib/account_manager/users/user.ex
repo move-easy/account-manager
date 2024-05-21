@@ -1,23 +1,5 @@
 defmodule AccountManager.Users.User do
-  @moduledoc """
-  User schema
-    Example:
-      iex> User.changeset(%{username: "oteixeiras", document: "123456", phone: "997037221", age: 18, password: "123456"})
-
-      return:
-        #Ecto.Changeset<
-          action: nil,
-          changes: %{
-            username: "oteixeiras",
-            document: "123456",
-            phone: "997037221",
-            age: 18
-          },
-          errors: [],
-          data: #AccountManager.Users.User<>,
-          valid?: true
-        >
-  """
+  @moduledoc false
 
   alias AccountManager.Accounts.History
   alias AccountManager.Users.Address
@@ -32,6 +14,8 @@ defmodule AccountManager.Users.User do
     age
     email
     password)a
+
+  @profile ~w(admin user)a
 
   schema "users" do
     field :username, :string
@@ -54,11 +38,12 @@ defmodule AccountManager.Users.User do
     user
     |> cast(attrs, @requered_fields)
     |> validate_required(@requered_fields)
-    |> validate_length(:username, min: 3, max: 50)
+    |> unique_constraint(:email)
+    |> unique_constraint(:document)
+    |> validate_length(:username, min: 4, max: 50)
     |> validate_length(:document, min: 11)
-    |> validate_length(:email, min: 5, max: 100)
     |> validate_format(:email, ~r/@/)
-    |> validate_inclusion(:profile, ["admin", "user"])
+    |> validate_inclusion(:profile, @profile)
     |> add_password_hash()
   end
 

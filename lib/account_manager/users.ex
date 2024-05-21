@@ -1,6 +1,6 @@
 defmodule AccountManager.Users do
-  @doc """
-  """
+  @moduledoc false
+
   alias AccountManager.Verify
   alias AccountManager.Users.Create
   alias AccountManager.Users.Get
