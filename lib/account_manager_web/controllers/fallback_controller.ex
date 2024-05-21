@@ -1,4 +1,6 @@
 defmodule AccountManagerWeb.FallbackController do
+  @moduledoc false
+
   use AccountManagerWeb, :controller
 
   def call(conn, {:error, :not_found}) do

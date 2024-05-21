@@ -1,7 +1,6 @@
 defmodule AccountManager.Users.Create do
-  @moduledoc """
-  Create a new account of user
-  """
+  @moduledoc false
+
   alias AccountManager.Users.{User, Address}
   alias AccountManager.Repo
 

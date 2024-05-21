@@ -1,4 +1,6 @@
 defmodule AccountManager.Verify do
+  @moduledoc false
+
   alias AccountManager.Users
 
   def call(%{"email" => email, "password" => password}) do

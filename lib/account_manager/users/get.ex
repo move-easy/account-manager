@@ -1,7 +1,6 @@
 defmodule AccountManager.Users.Get do
-  @moduledoc """
-  Get user by id
-  """
+  @moduledoc false
+
   alias AccountManager.Repo
   alias AccountManager.Users.User
 

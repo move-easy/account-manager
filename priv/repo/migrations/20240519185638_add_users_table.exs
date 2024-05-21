@@ -15,6 +15,7 @@ defmodule AccountManager.Repo.Migrations.AddUsersTable do
       timestamps()
     end
 
-    create unique_index("users", [:email, :document])
+    create unique_index("users", :email)
+    create unique_index("users", :document)
   end
 end

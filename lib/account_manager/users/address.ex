@@ -1,18 +1,5 @@
 defmodule AccountManager.Users.Address do
-  @moduledoc """
-  Address schema
-    Example:
-      iex(1)> AccountManager.Account.Address.changeset(%{zip_code: "29102347", user_id: 1, state_acronym: "ES"})
-
-      return:
-      #Ecto.Changeset<
-        action: nil,
-        changes: %{state_id: 1, user_id: 1, zip_code: "29102347"},
-        errors: [],
-        data: #AccountManager.Account.Address<>,
-        valid?: true
-      >
-  """
+  @moduledoc false
 
   use Ecto.Schema
   import Ecto.Changeset

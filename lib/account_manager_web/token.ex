@@ -1,4 +1,6 @@
 defmodule AccountManagerWeb.Token do
+  @moduledoc false
+
   alias AccountManagerWeb.Endpoint
 
   alias Phoenix.Token
