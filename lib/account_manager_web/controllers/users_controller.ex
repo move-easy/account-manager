@@ -13,4 +13,12 @@ defmodule AccountManagerWeb.UsersController do
       |> render(:create, user: user)
     end
   end
+
+  def show(conn, %{"email" => email}) do
+    with {:ok, %User{} = user} <- Users.get(email) do
+      conn
+      |> put_status(:ok)
+      |> render(:get, user: user)
+    end
+  end
 end
