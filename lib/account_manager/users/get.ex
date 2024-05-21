@@ -5,10 +5,10 @@ defmodule AccountManager.Users.Get do
   alias AccountManager.Repo
   alias AccountManager.Users.User
 
-  def call(id) do
-    case Repo.get(User, id) do
+  def call(email) do
+    case Repo.get(User, email) do
       nil -> {:error, :not_found}
-      user -> {:ok, user |> Repo.preload([:addresses, :accounts])}
+      user -> {:ok, user |> Repo.preload([:addresses])}
     end
   end
 end

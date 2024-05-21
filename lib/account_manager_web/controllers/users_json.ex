@@ -1,9 +1,16 @@
 defmodule AccountManagerWeb.UsersJSON do
   alias AccountManager.Users.User
 
-  def create(%{user: user}) do
+  def create(%{user: user}, token) do
     %{
       message: "User created",
+      data: data(user, token)
+    }
+  end
+
+  def show(%{user: user}) do
+    %{
+      message: "User found",
       data: data(user)
     }
   end
@@ -11,8 +18,15 @@ defmodule AccountManagerWeb.UsersJSON do
   defp data(%User{} = user) do
     %{
       id: user.id,
+      email: user.email
+    }
+  end
+
+  defp data(%User{} = user, token) do
+    %{
+      id: user.id,
       email: user.email,
-      token: "xpto"
+      token: token
     }
   end
 end
