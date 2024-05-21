@@ -8,6 +8,13 @@ defmodule AccountManagerWeb.UsersJSON do
     }
   end
 
+  def login(%{token: token}) do
+    %{
+      message: "User authenticated successfully!",
+      access_token: token
+    }
+  end
+
   def get(%{user: user}), do: %{data: data(user)}
 
   defp data(%User{} = user) do
