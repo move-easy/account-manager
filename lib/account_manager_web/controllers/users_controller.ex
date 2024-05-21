@@ -3,14 +3,16 @@ defmodule AccountManagerWeb.UsersController do
 
   alias AccountManager.Users
   alias AccountManager.Users.User
+  alias AccountManagerWeb.Token
 
   action_fallback AccountManagerWeb.FallbackController
 
   def create(conn, params) do
-    with {:ok, %User{} = user} <- Users.create(params) do
+    with {:ok, %User{} = user} <- Users.create(params),
+         {:ok, token} <- Token.sign(user) do
       conn
       |> put_status(:created)
-      |> render(:create, user: user)
+      |> render(:create, user: user, token: token)
     end
   end
 
