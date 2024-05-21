@@ -1,4 +1,6 @@
 defmodule AccountManagerWeb.UsersJSON do
+  @moduledoc false
+
   alias AccountManager.Users.User
 
   def create(%{user: user, token: token}) do

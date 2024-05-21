@@ -1,4 +1,6 @@
 defmodule AccountManagerWeb.UsersController do
+  @moduledoc false
+
   use AccountManagerWeb, :controller
 
   alias AccountManager.Users
