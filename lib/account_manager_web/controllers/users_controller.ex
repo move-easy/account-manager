@@ -23,4 +23,14 @@ defmodule AccountManagerWeb.UsersController do
       |> render(:get, user: user)
     end
   end
+
+  def login(conn, params) do
+    with {:ok, %User{} = user} <- Users.login(params) do
+      {:ok, token} = Token.sign(user)
+
+      conn
+      |> put_status(:ok)
+      |> render(:login, token: token)
+    end
+  end
 end
