@@ -1,8 +1,9 @@
 defmodule AccountManager.Users.Create do
   @moduledoc false
 
-  alias AccountManager.Users.{User, Address}
   alias AccountManager.Repo
+  alias AccountManager.Users.Address
+  alias AccountManager.Users.User
 
   def call(params) do
     params

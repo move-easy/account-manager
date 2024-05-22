@@ -11,7 +11,7 @@ defmodule AccountManagerWeb.Router do
     resources "/users", UsersController, only: [:create, :update, :delete]
 
     get "/users/:email", UsersController, :show
-    post "/users/login", UsersController, :login
+    post "/login", UsersController, :login
   end
 
   # Enable LiveDashboard in development
