@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres:13.5
+    image: postgres:14.5
     container_name: account_manager_db
     environment:
       POSTGRES_PASSWORD: postgres
