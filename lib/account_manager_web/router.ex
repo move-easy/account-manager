@@ -12,7 +12,7 @@ defmodule AccountManagerWeb.Router do
 
     get "/users/:email", UsersController, :show
     delete "/users/:email", UsersController, :delete
-    post "/login", UsersController, :login
+    post "/users/login", UsersController, :login
   end
 
   # Enable LiveDashboard in development
