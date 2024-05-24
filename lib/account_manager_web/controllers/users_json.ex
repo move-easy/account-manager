@@ -10,6 +10,13 @@ defmodule AccountManagerWeb.UsersJSON do
     }
   end
 
+  def delete(%{user: user}) do
+    %{
+      message: "User deleted",
+      data: data(user)
+    }
+  end
+
   def login(%{token: token}) do
     %{
       message: "User authenticated successfully!",
