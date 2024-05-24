@@ -18,6 +18,14 @@ defmodule AccountManagerWeb.UsersController do
     end
   end
 
+  def delete(conn, %{"email" => email}) do
+    with {:ok, %User{} = user} <- Users.delete(email) do
+      conn
+      |> put_status(:ok)
+      |> render(:delete, user: user)
+    end
+  end
+
   def show(conn, %{"email" => email}) do
     with {:ok, %User{} = user} <- Users.get(email) do
       conn

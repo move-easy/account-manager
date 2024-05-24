@@ -8,9 +8,10 @@ defmodule AccountManagerWeb.Router do
   scope "/api", AccountManagerWeb do
     pipe_through :api
 
-    resources "/users", UsersController, only: [:create, :update, :delete]
+    resources "/users", UsersController, only: [:create, :update]
 
     get "/users/:email", UsersController, :show
+    delete "/users/:email", UsersController, :delete
     post "/login", UsersController, :login
   end
 
