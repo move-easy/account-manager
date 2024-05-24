@@ -9,6 +9,7 @@ config :account_manager, AccountManager.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
+  port: 5440,
   database: "account_manager_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2

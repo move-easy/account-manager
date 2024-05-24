@@ -1,4 +1,6 @@
 defmodule AccountManagerWeb.ErrorJSONTest do
+  @doc false
+
   use AccountManagerWeb.ConnCase, async: true
 
   test "renders 404" do
