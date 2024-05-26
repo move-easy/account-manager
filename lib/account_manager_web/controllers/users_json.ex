@@ -3,36 +3,30 @@ defmodule AccountManagerWeb.UsersJSON do
 
   alias AccountManager.Users.User
 
-  def create(%{user: user, token: token}) do
-    %{
-      message: "User created",
-      data: data(user, token)
-    }
-  end
+  def create(%{user: user, token: token}), do: %{data: data(user, token, "User created successfully!")}
 
-  def login(%{token: token}) do
-    %{
-      message: "User authenticated successfully!",
-      access_token: token
-    }
-  end
+  def delete(%{user: user}), do: %{data: data(user, "User deleted successfully!")}
 
-  def get(%{user: user}), do: %{data: data(user)}
+  def login(%{user: user, token: token}), do: %{data: data(user, token, "User authenticated successfully!")}
 
-  defp data(%User{} = user) do
-    %{
-      id: user.id,
-      username: user.username,
-      email: user.email
-    }
-  end
+  def get(%{user: user}), do: %{data: data(user, "User retrieved successfully!")}
 
-  defp data(%User{} = user, token) do
-    %{
-      id: user.id,
+  defp data(%User{} = user, message),
+    do: %{
+      profile: user.profile,
       username: user.username,
       email: user.email,
-      access_token: token
+      is_active: user.is_active,
+      message: message
     }
-  end
+
+  defp data(%User{} = user, token, message),
+    do: %{
+      profile: user.profile,
+      username: user.username,
+      email: user.email,
+      is_active: user.is_active,
+      access_token: token,
+      message: message
+    }
 end

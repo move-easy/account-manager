@@ -5,13 +5,31 @@ defmodule AccountManagerWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AccountManagerWeb.AuthPlug
+  end
+
+  pipeline :token_acess do
+    plug AccountManagerWeb.TokenPlug
+  end
+
   scope "/api", AccountManagerWeb do
     pipe_through :api
 
-    resources "/users", UsersController, only: [:create, :update, :delete]
+    post "/users/login", UsersController, :login
+  end
 
-    get "/users/:email", UsersController, :show
-    post "/login", UsersController, :login
+  scope "/api", AccountManagerWeb do
+    pipe_through [:api, :token_acess]
+
+    post "/users", UsersController, :create
+  end
+
+  scope "/api", AccountManagerWeb do
+    pipe_through [:api, :auth]
+
+    get "/users/", UsersController, :show
+    delete "/users/", UsersController, :delete
   end
 
   # Enable LiveDashboard in development

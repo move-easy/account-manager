@@ -42,6 +42,7 @@ defmodule AccountManager.Users.User do
     |> unique_constraint(:document)
     |> validate_length(:username, min: 4, max: 50)
     |> validate_length(:document, min: 11)
+    |> validate_length(:password, min: 6)
     |> validate_format(:email, ~r/@/)
     |> validate_inclusion(:profile, @profile)
     |> add_password_hash()
