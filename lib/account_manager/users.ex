@@ -1,8 +1,8 @@
 defmodule AccountManager.Users do
   @moduledoc false
 
-  alias AccountManager.Users.Delete
   alias AccountManager.Users.Create
+  alias AccountManager.Users.Delete
   alias AccountManager.Users.Get
   alias AccountManager.Verify
 
