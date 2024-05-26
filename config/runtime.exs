@@ -31,7 +31,7 @@ if config_env() == :prod do
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
   config :account_manager, AccountManager.Repo,
-    # ssl: true,
+    ssl: true,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
@@ -54,6 +54,7 @@ if config_env() == :prod do
   config :account_manager, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
   config :account_manager, AccountManagerWeb.Endpoint,
+    force_ssl: [rewrite_on: [:x_forwarded_proto]],
     url: [host: host, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
