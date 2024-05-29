@@ -73,8 +73,8 @@ jobs:
 
       - uses: mhanberg/gigalixir-action@v0.4.0
         with:
-          GIGALIXIR_USERNAME: ${{ production.secrets.GIGALIXIR_USERNAME }}
-          GIGALIXIR_PASSWORD: ${{ production.secrets.GIGALIXIR_PASSWORD }}
-          GIGALIXIR_APP: ${{ production.secrets.GIGALIXIR_APP }}
-          SSH_PRIVATE_KEY: ${{ production.secrets.SSH_PRIVATE_KEY }}
+          GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
+          GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
+          GIGALIXIR_APP: ${{ secrets.GIGALIXIR_APP }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           MIGRATIONS: false
